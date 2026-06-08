@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ma Bibliothèque</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <h1>📚 Ma Bibliothèque</h1>
+  </header>
+
+  <main>
+
+    <section class="formulaire-section">
+      <h2 id="titre-formulaire">Ajouter un livre</h2>
+      <div class="formulaire">
+        <input type="hidden" id="livre-id" />
+        <input type="text" id="titre" placeholder="Titre du livre" />
+        <input type="text" id="auteur" placeholder="Auteur" />
+        <input type="text" id="categorie" placeholder="Catégorie (ex: Roman, Science...)" />
+        <input type="number" id="annee" placeholder="Année de publication" />
+        <div class="boutons-form">
+          <button id="btn-ajouter" onclick="sauvegarderLivre()">Ajouter</button>
+          <button id="btn-annuler" class="cache" onclick="annulerModification()">Annuler</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="liste-section">
+      <div class="barre-outils">
+        <input type="text" id="recherche" placeholder="🔍 Rechercher..." oninput="filtrerLivres()" />
+        <select id="filtre-categorie" onchange="filtrerLivres()">
+          <option value="">Toutes les catégories</option>
+        </select>
+        <select id="tri" onchange="filtrerLivres()">
+          <option value="titre">Trier par titre</option>
+          <option value="auteur">Trier par auteur</option>
+          <option value="annee">Trier par année</option>
+        </select>
+      </div>
+
+      <p id="compteur">0 livre(s)</p>
+      <div id="liste-livres"></div>
+      <p id="message-vide" class="cache">Aucun livre trouvé.</p>
+    </section>
+
+  </main>
+
+  <div id="overlay" class="cache" onclick="fermerModal()"></div>
+  <div id="modal-confirmation" class="cache">
+    <p>Voulez-vous vraiment supprimer ce livre ?</p>
+    <div class="boutons-modal">
+      <button class="btn-danger" onclick="confirmerSuppression()">Supprimer</button>
+      <button onclick="fermerModal()">Annuler</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
